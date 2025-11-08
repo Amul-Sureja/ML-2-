@@ -309,4 +309,4 @@ amul-mle/
 Happy detecting! If you deploy to Render, ensure `models/` and `data/processed/vocab.json` are available at build/runtime, or add a setup step to train and persist artifacts.
 
 
-runn this project = .\run_all.bat
+run this project = .\run_all.bat
