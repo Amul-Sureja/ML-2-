@@ -1,0 +1,213 @@
+/* Base reset & variables */
+:root {
+  --bg: #fafafa;
+  --text: #212121;
+  --muted: #666;
+  --border: #e3e3e3;
+  --primary: #0d6efd;
+  --primary-ink: #fff;
+  --ok-bg: #e8f7ee;
+  --ok-ink: #116b3b;
+  --ok-br: #cfead9;
+  --warn-bg: #fdecea;
+  --warn-ink: #b32017;
+  --warn-br: #f6c8c1;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, Arial, sans-serif;
+}
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+}
+p {
+  margin: 0.5rem 0 1rem;
+  color: var(--text);
+}
+code,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+}
+
+/* Links & buttons */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+button,
+.btn-secondary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--primary-ink);
+}
+button:hover {
+  filter: brightness(0.98);
+}
+.btn-secondary {
+  background: #f4f4f4;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.is-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Forms */
+label {
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0.35rem;
+}
+textarea,
+input,
+select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+}
+textarea:focus,
+input:focus,
+select:focus {
+  outline: 2px solid rgba(13, 110, 253, 0.2);
+  border-color: var(--primary);
+}
+
+/* Container and layout */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sticky results pane */
+.sticky {
+  position: sticky;
+  top: 1rem;
+}
+
+/* Cards and sections */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+.card h3,
+.card h4 {
+  margin-top: 0;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+}
+.badge.ok {
+  background: var(--ok-bg);
+  color: var(--ok-ink);
+  border-color: var(--ok-br);
+}
+.badge.warn {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  border-color: var(--warn-br);
+}
+
+/* Table for token explanations */
+.tokens {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.tokens th,
+.tokens td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+.tokens th {
+  text-align: left;
+  color: #555;
+  font-weight: 600;
+}
+.tokens code {
+  background: #f7f7f7;
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+}
+
+/* Textarea sizing */
+textarea#email {
+  min-height: 420px;
+  resize: vertical;
+}
+
+/* Header alignment overrides */
+header h1 {
+  text-align: center;
+}
+header p {
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+}

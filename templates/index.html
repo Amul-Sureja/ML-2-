@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="two-col">
+    <div>
+      <form method="post" action="/">
+        <label for="email">Email content</label>
+        <textarea id="email" name="email" rows="16" placeholder="Paste email text here...">{{ text }}</textarea>
+        <div class="actions">
+          <button type="submit">Analyze</button>
+          <button class="btn-secondary" id="clear-btn" type="button">Clear</button>
+        </div>
+      </form>
+      {% if error %}
+        <div style="margin-top:1rem;color:#b00020">{{ error }}</div>
+      {% endif %}
+    </div>
+
+    <div class="sticky">
+      {% if result %}
+        <div id="result-block" class="card">
+          <h3 style="margin-top:0">Result</h3>
+          <p>
+            <strong>Prediction:</strong>
+            {% if result.label == 'phishing' %}
+              <span class="badge warn">{{ result.label }}</span>
+            {% else %}
+              <span class="badge ok">{{ result.label }}</span>
+            {% endif %}
+          </p>
+          {% if result.confidence is not none %}
+            <p><strong>Confidence:</strong> {{ (result.confidence * 100) | round(2) }}%</p>
+          {% endif %}
+          <div class="actions" style="margin:.5rem 0 1rem 0;">
+            <button class="btn-ghost" id="copy-btn" type="button">Copy result</button>
+          </div>
+
+          {% if result.explanation %}
+            <div class="two-col">
+              <div>
+                <h4>Top phishing indicators</h4>
+                <table class="tokens">
+                  <thead>
+                    <tr><th>Token</th><th>Count</th><th>Contribution</th></tr>
+                  </thead>
+                  <tbody>
+                    {% for tok, contrib, cnt in result.explanation.top_positive %}
+                      <tr><td><code>{{ tok }}</code></td><td>{{ cnt }}</td><td>{{ contrib | round(3) }}</td></tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <h4>Top legitimate indicators</h4>
+                <table class="tokens">
+                  <thead>
+                    <tr><th>Token</th><th>Count</th><th>Contribution</th></tr>
+                  </thead>
+                  <tbody>
+                    {% for tok, contrib, cnt in result.explanation.top_negative %}
+                      <tr><td><code>{{ tok }}</code></td><td>{{ cnt }}</td><td>{{ contrib | round(3) }}</td></tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+

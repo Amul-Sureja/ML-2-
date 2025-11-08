@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or 'Phishing Detector' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" />
+  </head>
+  <body>
+    <header>
+      <h1 style="text-align:center">{{ title or 'Phishing Detector' }}</h1>
+      <p style="margin-top:-0.5rem;color:#666;text-align:center">Paste an email to classify as phishing or not.</p>
+    </header>
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+    <footer style="margin-top:2rem;color:#888;font-size:0.9rem">
+      <span>Powered by Flask</span>
+    </footer>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+  </html>
+
+
